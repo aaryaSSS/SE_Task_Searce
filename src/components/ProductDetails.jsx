@@ -26,38 +26,52 @@ const ProductDetails = () => {
   }
 
   return (
-    
-    <div className="container mx-auto p-4">
-      <button
-        onClick={handleBackClick}
-        className="px-4 py-2 rounded mb-4"
-      >
-        Back
-      </button>
-      <button className="px-4 py-2 rounded shadow hover:bg-blue-600 transition"
-          onClick={() => navigate("/cart")}
-      >
-            🛒 View Cart ({cartItems.length})
-      </button>
-      <div className="border p-4 rounded shadow">
-        <img
-          src={selectedProduct.image}
-          alt={selectedProduct.title}
-          className="w-full h-64 object-contain mb-4"
-        />
-        <h1 className="text-2xl font-bold mb-2">{selectedProduct.title}</h1>
-        <p className="text-lg font-semibold text-gray-700 mb-2">${selectedProduct.price}</p>
-        <p className="text-gray-700 mb-4">{selectedProduct.description}</p>
-        <p className="text-sm text-gray-500">Category: {selectedProduct.category}</p>
-
-        <button
-          onClick={handleAddToCart}
-          className="px-4 py-2 rounded mt-4"
-        >
-          Add to Cart
-        </button>
-      </div>
+  <div className="container mx-auto p-3">
+  {/* Navigation Buttons */}
+  <div className="flex justify-between mb-6">
+    <button
+      onClick={handleBackClick}
+      className="px-4 py-2 bg-gray-200 text-gray-800 rounded shadow hover:bg-gray-300 transition"
+    >
+      ⬅️ Back
+    </button>
+    <button
+      className="px-4 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600 transition"
+      onClick={() => navigate("/cart")}
+    >
+      🛒 View Cart ({cartItems.length})
+    </button>
+  </div>
+    <br></br>
+    <br></br>
+    <br></br>
+  {/* Product Card */}
+  <div className="border p-6 rounded-lg shadow-lg bg-white">
+    {/* Product Image */}
+    <div className="flex justify-center mb-6">
+      <img
+        src={selectedProduct.image}
+        alt={selectedProduct.title}
+        className="w-auto h-[550px] object-contain bg-gray-100 rounded-lg"
+      />
     </div>
+
+    {/* Product Details */}
+    <h1 className="text-3xl font-bold text-gray-900 mb-3">{selectedProduct.title}</h1>
+    <p className="text-xl font-semibold text-blue-600 mb-2">${selectedProduct.price}</p>
+    <p className="text-gray-700 mb-4 leading-relaxed">{selectedProduct.description}</p>
+    <p className="text-sm text-gray-500 italic">Category: {selectedProduct.category}</p>
+
+    {/* Add to Cart Button */}
+    <button
+      onClick={handleAddToCart}
+      className="w-full mt-6 px-5 py-3 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition"
+    >
+      ➕ Add to Cart
+    </button>
+  </div>
+</div>
+
   );
 };
 
