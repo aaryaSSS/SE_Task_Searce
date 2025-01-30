@@ -46,14 +46,13 @@ const ProductListing = () => {
       {/* Header with View Cart Button */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Product Listing</h1>
-        {cartItems.length > 0 && (
           <button
             className="px-4 py-2 rounded shadow hover:bg-blue-600 transition"
             onClick={() => navigate("/cart")}
           >
             🛒 View Cart ({cartItems.length})
           </button>
-        )}
+
       </div>
 
       {/* Product Categories */}
