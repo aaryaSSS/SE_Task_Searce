@@ -1,27 +1,33 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchProducts } from "../api/productsApi";
+// import { fetchProducts } from "../api/productsApi";
+import { useGetProductsQuery } from "../features/products/productsApi";
 import { setProducts, selectProduct } from "../features/products/productsSlice";
 
 const ProductListing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const products = useSelector((state) => state.products.items);
+  // const products = useSelector((state) => state.products.items);
   const cartItems = useSelector((state) => state.cart.cartItems); // Get cart state
 
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const data = await fetchProducts();
-        dispatch(setProducts(data));
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     try {
+  //       const data = await fetchProducts();
+  //       dispatch(setProducts(data));
+  //     } catch (error) {
+  //       console.error("Error fetching products:", error);
+  //     }
+  //   };
 
-    getProducts();
-  }, [dispatch]);
+  //   getProducts();
+  // }, [dispatch]);
+
+  const { data: products = [], isLoading, error } = useGetProductsQuery();
+
+  if (isLoading) return <p>Loading products...</p>;
+  if (error) return <p>Error fetching products!</p>;
 
   // Group products by category
   const groupedProducts = products.reduce((acc, product) => {
