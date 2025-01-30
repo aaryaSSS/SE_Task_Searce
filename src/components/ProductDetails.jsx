@@ -6,6 +6,7 @@ import { addToCart } from '../features/cart/cartSlice';
 
 const ProductDetails = () => {
   const selectedProduct = useSelector((state) => state.products.selectedProduct);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,12 +25,18 @@ const ProductDetails = () => {
   }
 
   return (
+    
     <div className="container mx-auto p-4">
       <button
         onClick={handleBackClick}
         className="px-4 py-2 rounded mb-4"
       >
         Back
+      </button>
+      <button className="px-4 py-2 rounded shadow hover:bg-blue-600 transition"
+          onClick={() => navigate("/cart")}
+      >
+            🛒 View Cart ({cartItems.length})
       </button>
       <div className="border p-4 rounded shadow">
         <img
