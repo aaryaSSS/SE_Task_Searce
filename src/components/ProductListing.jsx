@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { fetchProducts } from "../api/productsApi";
-import { useGetProductsQuery } from "../features/products/productsApi";
+import { useGetProductsQuery } from "../api/productsApi";
 import { setProducts, selectProduct } from "../features/products/productsSlice";
 
 const ProductListing = () => {
@@ -14,7 +14,7 @@ const ProductListing = () => {
   // useEffect(() => {
   //   const getProducts = async () => {
   //     try {
-  //       const data = await fetchProducts();
+  //       const data = await useGetProductsQuery();
   //       dispatch(setProducts(data));
   //     } catch (error) {
   //       console.error("Error fetching products:", error);
@@ -26,6 +26,12 @@ const ProductListing = () => {
 
   const { data: products = [], isLoading, error } = useGetProductsQuery();
 
+  useEffect(() => {
+    if (products.length > 0) {
+      dispatch(setProducts(products));
+    }
+  }, [products, dispatch]);
+  
   if (isLoading) return <p>Loading products...</p>;
   if (error) return <p>Error fetching products!</p>;
 

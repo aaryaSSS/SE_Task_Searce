@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { clearSelectedProduct } from '../features/products/productsSlice';
 import { addToCart } from '../features/cart/cartSlice';
+
 
 const ProductDetails = () => {
   const selectedProduct = useSelector((state) => state.products.selectedProduct);
