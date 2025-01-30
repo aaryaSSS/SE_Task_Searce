@@ -48,43 +48,94 @@ const ProductListing = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      {/* Header with View Cart Button */}
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Product Listing</h1>
-          <button
-            className="px-4 py-2 rounded shadow hover:bg-blue-600 transition"
-            onClick={() => navigate("/cart")}
-          >
-            🛒 View Cart ({cartItems.length})
-          </button>
+    // <div className="container mx-auto p-4">
+    //   {/* Header with View Cart Button */}
+    //   <div className="flex justify-between items-center mb-4">
+    //     <h1 className="text-2xl font-bold">Product Listing</h1>
+    //       <button
+    //         className="px-4 py-2 rounded shadow hover:bg-blue-600 transition"
+    //         onClick={() => navigate("/cart")}
+    //       >
+    //         🛒 View Cart ({cartItems.length})
+    //       </button>
 
-      </div>
+    //   </div>
 
-      {/* Product Categories */}
-      {Object.entries(groupedProducts).map(([category, items]) => (
-        <div key={category} className="mb-8">
-          <h2 className="text-xl font-bold mb-4">{category}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {items.map((product) => (
-              <div
-                key={product.id}
-                className="border p-4 rounded shadow cursor-pointer hover:shadow-lg transition"
-                onClick={() => handleProductClick(product)}
-              >
+    //   {/* Product Categories */}
+    //   {Object.entries(groupedProducts).map(([category, items]) => (
+    //     <div key={category} className="mb-8">
+    //       <h2 className="text-xl font-bold mb-4">{category}</h2>
+    //       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    //         {items.map((product) => (
+    //           <div
+    //             key={product.id}
+    //             className="border p-4 rounded shadow cursor-pointer hover:shadow-lg transition"
+    //             onClick={() => handleProductClick(product)}
+    //           >
+    //             <img
+    //               src={product.image}
+    //               alt={product.title}
+    //               className="w-full h-48 object-contain mb-2"
+    //             />
+    //             <h2 className="text-lg font-semibold">{product.title}</h2>
+    //             <p className="text-gray-700">${product.price}</p>
+    //           </div>
+    //         ))}
+    //       </div>
+    //     </div>
+    //   ))}
+    // </div>
+    <div className="container mx-auto p-6">
+    <div className="flex justify-between items-center mb-6">
+      <h1 className="text-3xl font-bold text-gray-900">🛍️ Product Listing</h1>
+      
+      <button
+        className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition"
+        onClick={() => navigate("/cart")}
+      >
+        🛒 View Cart ({cartItems.length})
+      </button>
+    </div>
+    <br></br>
+      <br></br>
+      <br></br>
+    {Object.entries(groupedProducts).map(([category, items]) => (
+      <div key={category} className="mb-10">
+        <h1 className="text-2xl font-semibold text-gray-800 mb-3 border-b pb-2">
+          {category}
+        </h1>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+          {items.map((product) => (
+            <div
+              key={product.id}
+              className="border rounded-lg overflow-hidden shadow-md bg-white hover:shadow-lg transition cursor-pointer relative flex flex-col"  // Added flex flex-col
+              onClick={() => handleProductClick(product)}
+            >
+              <div className="aspect-square overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-48 object-contain mb-2"
+                  className="w-full h-full object-cover bg-gray-100 rounded"
                 />
-                <h2 className="text-lg font-semibold">{product.title}</h2>
-                <p className="text-gray-700">${product.price}</p>
+              </div> 
+              
+              <div className="p-2 flex-grow"> {/* Added flex-grow */}
+                <h2 className="text-sm font-medium text-gray-900 truncate h-10 line-clamp-3">
+                  {product.title}
+                </h2>
+                <p className="text-gray-700 text-sm mt-1">${product.price}</p>
               </div>
-            ))}
-          </div>
+              {/* Optional "Add to Cart" button */}
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 w-full">
+                Add to Cart
+              </button>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
+  </div>
   );
 };
 
