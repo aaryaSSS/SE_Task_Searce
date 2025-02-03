@@ -123,7 +123,10 @@ const CartItems = () => {
                 type="tel"
                 className="form-control"
                 placeholder="Mobile number"
-                {...register("mobileNumber", { required: "Mobile number is required" })}
+                {...register("mobileNumber", { required: "Mobile number is required" ,pattern: {
+                  value: /^[0-9]{10}$/,
+                  message: "Phone number must be valid",
+                },})}
               />
               {errors.mobileNumber && <p className="text-danger">{errors.mobileNumber.message}</p>}
             </div>

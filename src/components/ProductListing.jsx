@@ -41,7 +41,7 @@ const ProductListing = () => {
       <h1 className="text-3xl font-bold text-gray-900">🛍️ Product Listing</h1>
       
       <button
-        className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition"
+        className="px-4 py-2 font-semibold rounded-lg shadow-md hover:bg-blue-600 transition"
         onClick={() => navigate("/cart")}
       >
         🛒 View Cart ({cartItems.length})
@@ -78,7 +78,7 @@ const ProductListing = () => {
                 <p className="text-gray-700 text-sm mt-1">${product.price}</p>
               </div>
               {/* Optional "Add to Cart" button */}
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 w-full">
+              <button className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded mt-2 w-full">
                 Add to Cart
               </button>
             </div>

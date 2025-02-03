@@ -36,7 +36,7 @@ const ProductDetails = () => {
       ⬅️ Back
     </button>
     <button
-      className="px-4 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600 transition"
+      className="px-4 py-2 bg-blue-500 rounded shadow hover:bg-blue-600 transition"
       onClick={() => navigate("/cart")}
     >
       🛒 View Cart ({cartItems.length})

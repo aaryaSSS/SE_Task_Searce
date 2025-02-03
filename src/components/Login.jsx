@@ -56,7 +56,7 @@ const Login = () => {
           {errors.password && <p className="text-red-500">{errors.password.message}</p>}
         </div>
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full" disabled={isLoading}>
+        <button type="submit" className="bg-blue-500  p-2 rounded w-full" disabled={isLoading}>
           {isLoading ? 'Logging in...' : 'Login'}
         </button>
       </form>
